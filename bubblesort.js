@@ -5,8 +5,7 @@ function bubbleSort(array) {
 
         for (let j = 0; j < i - 1; j++){
             let test = newArray.pop();
-            let test2 = swap(test, array[j + 1])
-            newArray = newArray.concat(test2);
+            newArray = newArray.concat(swap(test, array[j + 1]));
         }
 
         newArray = newArray.concat(array.slice(i))
