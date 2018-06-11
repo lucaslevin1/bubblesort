@@ -5,33 +5,10 @@ function split (arr){
 function merge (arr1, arr2){
     return arr1.concat(arr2).sort();
 }
-function mergeSort(array) {
-    let arrSplit = split(array),
-        arr1 = arrSplit[0],
-        arr2 = arrSplit[1],
-        arr1Length = one(arr1),
-        arr2Length = one(arr2),
-        arr1MS,
-        arr2MS;
-
-    if (!arr1Length) arr1MS = mergeSort(arr1);
-    if (!arr2Length) arr2MS  = mergeSort(arr2);
-
-    if (arr1Length && arr2Length){
-        return merge(arr1, arr2);
-    } else if (arr1Length){
-        return merge(arr1, arr1MS);
-    } else if (arr2Length){
-        return merge(arr1MS, arr2);
-    } else {
-        return merge(arr1MS, arr2MS);
+function mergeSort (array) {
+    if (array.length === 1) {
+      return array;
     }
-}
-
-function one(array){
-    if (array.length === 1){
-        return true;
-    } else {
-        return false;
-    }
+    let splitArr = split(array);
+    return merge(mergeSort(splitArr[0]), mergeSort(splitArr[1]));
 }
